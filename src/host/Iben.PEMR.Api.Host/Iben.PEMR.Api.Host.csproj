@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aaf04e4c-3925-4f96-80f3-92fc8d6f3272</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Dockerfile" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac" Version="8.1.0" />
+    <PackageReference Include="Volo.Abp.DistributedLocking" Version="8.1.0" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Iben.PEMR.Api.Repository\Iben.PEMR.Api.Repository.csproj" />
+    <ProjectReference Include="..\..\service\Iben.PEMR.Api.Service\Iben.PEMR.Api.Service.csproj" />
+  </ItemGroup>
+
+</Project>

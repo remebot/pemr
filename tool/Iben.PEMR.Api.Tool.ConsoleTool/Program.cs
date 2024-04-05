@@ -8,8 +8,8 @@ namespace Iben.PEMR.Api.Tool.ConsoleTool
     {
         static async Task Main(string[] args)
         {
-            string accessKeyId = "AKIARNDCCILZWDDNCVCS";
-            string secretAccessKey = "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";
+            string accessKeyId = "";
+            string secretAccessKey = "";
             var client = new AmazonDynamoDBClient(accessKeyId, secretAccessKey, Amazon.RegionEndpoint.CNNorth1);
 
             var table = Table.LoadTable(client, "PEMR.User");

@@ -1,6 +1,8 @@
-﻿using Iben.PEMR.Api.Domain;
+﻿using Autofac.Core;
+using Iben.PEMR.Api.Domain;
 using Iben.PEMR.Api.Repository;
 using Iben.PEMR.Api.Service;
+using Microsoft.OpenApi.Models;
 using NUglify;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
@@ -39,11 +41,31 @@ public class ApiHostModule : AbpModule
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
 
+        ConfigureSwaggerServices(context.Services);
         ConfigureApiRequestModelBinder(context);
         ConfigureAutoMapper();
         ConfigureAutoApiControllers();
     }
 
+
+    private void ConfigureSwaggerServices(IServiceCollection services)
+    {
+        services.AddAbpSwaggerGen(
+            options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = " API", Version = "v1" });
+                options.DocInclusionPredicate((_, description) =>
+                {
+                    if (description.ActionDescriptor.AttributeRouteInfo?.Template?.StartsWith("api/abp/") == true)
+                    {
+                        return false;
+                    }
+
+                    return true;
+                });
+                options.CustomSchemaIds(type => type.FullName);
+            });
+    }
 
     private static void ConfigureApiRequestModelBinder(ServiceConfigurationContext context)
     {
@@ -77,6 +99,8 @@ public class ApiHostModule : AbpModule
         });
     }
 
+
+
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {
         var app = context.GetApplicationBuilder();
@@ -102,12 +126,12 @@ public class ApiHostModule : AbpModule
         app.UseUnitOfWork();
 
 #if DEBUG //调试模式才开启,手动开启
-        //app.UseStaticFiles();
-        //app.UseSwagger();
-        //app.UseAbpSwaggerUI(options =>
-        //{
-        //    options.SwaggerEndpoint("/swagger/v1/swagger.json", "API API");
-        //});
+        app.UseStaticFiles();
+        app.UseSwagger();
+        app.UseAbpSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "API API");
+        });
 #endif
 
         app.UseAuditing();

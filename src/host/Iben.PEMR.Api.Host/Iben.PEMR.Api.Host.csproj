@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Iben.PEMR.Api.Repository\Iben.PEMR.Api.Repository.csproj" />
+    <ProjectReference Include="..\..\service\Iben.PEMR.Api.Repository\Iben.PEMR.Api.Repository.csproj" />
     <ProjectReference Include="..\..\service\Iben.PEMR.Api.Service\Iben.PEMR.Api.Service.csproj" />
   </ItemGroup>
 

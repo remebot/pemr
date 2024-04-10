@@ -33,7 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tool", "tool", "{345E94D4-B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iben.PEMR.Api.Tool.ConsoleTool", "tool\Iben.PEMR.Api.Tool.ConsoleTool\Iben.PEMR.Api.Tool.ConsoleTool.csproj", "{378F9B4F-D8BE-44F7-8429-E2C3D5A287A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iben.PEMR.Api.Repository", "Iben.PEMR.Api.Repository\Iben.PEMR.Api.Repository.csproj", "{B36E2780-3272-40CE-94FB-F216C28E5A23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iben.PEMR.Api.Repository", "src\service\Iben.PEMR.Api.Repository\Iben.PEMR.Api.Repository.csproj", "{B36E2780-3272-40CE-94FB-F216C28E5A23}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "library", "library", "{304C87F4-1436-4ED0-B77A-9EB7454D7E30}"
 EndProject
